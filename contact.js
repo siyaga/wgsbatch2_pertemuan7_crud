@@ -95,7 +95,6 @@ const detailContact = (name)=> {
 //Membuat fungsi Delete Contact dengan parameter masukan name
 const deleteContact = (name)=> {
   const contacts = loadContact();
-  console.log('Detail contact : ');
   //Membuat array baru untuk di masukan ke dalam newContact
   const newContact = contacts.filter((contact)=>contact.name.toLowerCase() !== name.toLowerCase());
 
