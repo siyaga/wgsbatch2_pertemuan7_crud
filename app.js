@@ -49,6 +49,40 @@
             contact.listContact();
         },
     });
+       // shown contact Detail
+       yargs.command({
+        command:'detail',
+        describe:'see contact detail base on name',
+        builder:{
+            //membuat isi Objek deksripsinya
+            // Membuat nama
+            name: {
+                describe:'Contact name',
+                demandOption:true,
+                type:'string',
+            },
+        },
+        handler(argv){
+            contact.detailContact(argv.name);
+        },
+    });
+       // shown contact Delete
+       yargs.command({
+        command:'delete',
+        describe:'delete contact base on name',
+        builder:{
+            //membuat isi Objek deksripsinya
+            // Membuat nama
+            name: {
+                describe:'Contact name',
+                demandOption:true,
+                type:'string',
+            },
+        },
+        handler(argv){
+            contact.deleteContact(argv.name);
+        },
+    });
 
     yargs.parse();
  

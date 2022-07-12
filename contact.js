@@ -71,6 +71,41 @@ const listContact= ()=>{
 
   });
 };
+//Membuat fungsi detail Contact dengan parameter masukan name
+const detailContact = (name)=> {
+  const contacts = loadContact();
+  console.log('Detail contact : ');
+  const contact = contacts.find((contact)=>contact.name.toLowerCase() === name.toLowerCase());
 
 
-module.exports = { saveIsiData, listContact};
+  
+  if(!contact){
+    console.log("Nama tidak ada");
+    return false;
+  }
+
+  
+  console.log(` Nama : ${contact.name}`);
+  console.log(` Email : ${contact.email}`);
+  console.log(` No Telp : ${contact.mobile}`);
+
+ 
+}
+
+//Membuat fungsi Delete Contact dengan parameter masukan name
+const deleteContact = (name)=> {
+  const contacts = loadContact();
+  console.log('Detail contact : ');
+  const newContact = contacts.filter((contact)=>contact.name.toLowerCase() !== name.toLowerCase());
+
+
+  
+  if(contacts.length === newContact.length){
+    console.log(`${name} tidak ditemukan`);
+    return false;
+  }
+  fs.writeFileSync('data/contacts.json', JSON.stringify(newContact));
+  console.log(` ${name} Berhasil di hapus`);
+}
+
+module.exports = { saveIsiData, listContact, detailContact, deleteContact};
