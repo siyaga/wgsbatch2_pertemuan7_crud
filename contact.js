@@ -78,7 +78,7 @@ const detailContact = (name)=> {
   const contact = contacts.find((contact)=>contact.name.toLowerCase() === name.toLowerCase());
 
 
-  
+  //Melakukan validasi jika nama tidak di temukan
   if(!contact){
     console.log("Nama tidak ada");
     return false;
@@ -96,14 +96,17 @@ const detailContact = (name)=> {
 const deleteContact = (name)=> {
   const contacts = loadContact();
   console.log('Detail contact : ');
+  //Membuat array baru untuk di masukan ke dalam newContact
   const newContact = contacts.filter((contact)=>contact.name.toLowerCase() !== name.toLowerCase());
 
 
-  
+  //Melakukan validasi bila tidak di temukan namanya
   if(contacts.length === newContact.length){
     console.log(`${name} tidak ditemukan`);
     return false;
   }
+
+  //melakukan timpa terhadap array baru
   fs.writeFileSync('data/contacts.json', JSON.stringify(newContact));
   console.log(` ${name} Berhasil di hapus`);
 }
